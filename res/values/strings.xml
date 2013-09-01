@@ -7,5 +7,6 @@
     <string name="new_project_button"> New image</string>
     <string name="existing_images"> Saved images</string>
     <string name="from_the_database">Database</string>
+    <string name="album_name">projects</string>
 
 </resources>
