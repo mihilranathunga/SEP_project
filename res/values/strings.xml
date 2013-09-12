@@ -10,5 +10,6 @@
     <string name="from_the_database">Database</string>
     <string name="album_name">projects</string>
     <string name="enter_project_name">Enter Project Name :</string>
+    <string name="annotate">Annotate</string>
 
 </resources>

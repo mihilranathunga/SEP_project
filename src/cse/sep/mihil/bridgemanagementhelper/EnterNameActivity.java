@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class EnterNameActivity extends Activity{
+public class EnterNameActivity extends Activity {
 
 	static final String PUBLIC_STATIC_STRING_IDENTIFIER = "projectname";
 
@@ -17,19 +17,20 @@ public class EnterNameActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_entername);
 	}
-	public void sendOk(View view){
-		
+
+	public void sendOk(View view) {
+
 		Intent resultIntent = new Intent();
-		EditText pname = (EditText)findViewById(R.id.enter_project_name);
-		resultIntent.putExtra(PUBLIC_STATIC_STRING_IDENTIFIER,pname.getText().toString());
+		EditText pname = (EditText) findViewById(R.id.enter_project_name);
+		resultIntent.putExtra(PUBLIC_STATIC_STRING_IDENTIFIER, pname.getText()
+				.toString());
 		setResult(Activity.RESULT_OK, resultIntent);
 		finish();
 	}
-	
-public void sendCancel(View view){
-		
+
+	public void sendCancel(View view) {
+
 		this.finish();
 	}
-
 
 }
