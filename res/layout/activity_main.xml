@@ -15,7 +15,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/button_icon"
-        android:onClick="sendMessage"
         android:text="@string/new_project_button" />
     	
 
