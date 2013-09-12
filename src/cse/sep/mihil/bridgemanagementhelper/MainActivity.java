@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
 	private static final int MEDIA_TYPE_IMAGE = 1;
 	private static final int MEDIA_TYPE_VIDEO = 2;
 	private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
+	private static final int CAPTURE_PROJECT_NAME_REQUEST_CODE = 25;
 	private Object fileUri;
 
 	@Override
@@ -61,12 +62,26 @@ public class MainActivity extends Activity {
 		            // Image captured and saved to fileUri specified in the Intent
 		            Toast.makeText(this, "Image saved to:\n" +
 		                     data.getData(), Toast.LENGTH_LONG).show();
+		            // start activity to get project name
+		            Intent intent = new Intent(this , EnterNameActivity.class);
+				    startActivityForResult(intent,CAPTURE_PROJECT_NAME_REQUEST_CODE);
 		        } else if (resultCode == RESULT_CANCELED) {
 		            // User cancelled the image capture
 		        } else {
-		            // Image capture failed, advise user
+		            return;
 		        }
 		    }
+		    else if(requestCode == CAPTURE_PROJECT_NAME_REQUEST_CODE){
+		    	
+		    	if (resultCode == RESULT_OK) {
+		            // Project name entered
+		          /*  Toast.makeText(this, "Image saved to:\n" +
+		                     data.getData(), Toast.LENGTH_LONG).show();*/
+		    		String newText = data.getStringExtra(EnterNameActivity.PUBLIC_STATIC_STRING_IDENTIFIER);
+		        }
+		    	
+		    }
+		    
 		}
 	
 		
