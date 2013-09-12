@@ -9,7 +9,9 @@ import android.widget.TextView;
 
 public class EnterNameActivity extends Activity {
 
-	static final String PUBLIC_STATIC_STRING_IDENTIFIER = "projectname";
+	public static final String PUBLIC_STATIC_PROJECT_IDENTIFIER = "projectname";
+	public static final String PUBLIC_STATIC_IMAGEPATH_IDENTIFIER = "image";
+			
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,10 +21,12 @@ public class EnterNameActivity extends Activity {
 	}
 
 	public void sendOk(View view) {
+		
+		// result is send back to the recieving activity
 
 		Intent resultIntent = new Intent();
 		EditText pname = (EditText) findViewById(R.id.enter_project_name);
-		resultIntent.putExtra(PUBLIC_STATIC_STRING_IDENTIFIER, pname.getText()
+		resultIntent.putExtra(PUBLIC_STATIC_PROJECT_IDENTIFIER, pname.getText()
 				.toString());
 		setResult(Activity.RESULT_OK, resultIntent);
 		finish();
