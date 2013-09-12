@@ -39,16 +39,14 @@ public class MainActivity extends Activity {
 	private ImageView mImageView;
 	private Bitmap mImageBitmap;
 	
-	private static final String VIDEO_STORAGE_KEY = "viewvideo";
-	private static final String VIDEOVIEW_VISIBILITY_STORAGE_KEY = "videoviewvisibility";
-	private VideoView mVideoView;
-	private Uri mVideoUri;
+
 
 	private String mCurrentPhotoPath;
 
 	private static final String JPEG_FILE_PREFIX = "IMG_";
 	private static final String JPEG_FILE_SUFFIX = ".jpg";
 	private static final int CAPTURE_PROJECT_NAME_REQUEST_CODE = 100;
+	private static final int ANNOTATE_ACTIVITY_REQUEST_CODE = 0;
 
 	private AlbumStorageDirFactory mAlbumStorageDirFactory = null;
 	
@@ -100,49 +98,8 @@ public class MainActivity extends Activity {
 		return f;
 	}
 
-	private void setPic() {
 
-		/* There isn't enough memory to open up more than a couple camera photos */
-		/* So pre-scale the target bitmap into which the file is decoded */
 
-		/* Get the size of the ImageView */
-		int targetW = 400;
-		int targetH = 300;
-
-		/* Get the size of the image */
-		BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-		bmOptions.inJustDecodeBounds = true;
-		BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
-		int photoW = bmOptions.outWidth;
-		int photoH = bmOptions.outHeight;
-		
-		/* Figure out which way needs to be reduced less */
-		int scaleFactor = 1;
-		if ((targetW > 0) || (targetH > 0)) {
-			scaleFactor = Math.min(photoW/targetW, photoH/targetH);	
-		}
-
-		/* Set bitmap options to scale the image decode target */
-		bmOptions.inJustDecodeBounds = false;
-		bmOptions.inSampleSize = scaleFactor;
-		bmOptions.inPurgeable = true;
-
-		/* Decode the JPEG file into a Bitmap */
-		Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
-		
-		/* Associate the Bitmap to the ImageView */
-		mImageView.setImageBitmap(bitmap);
-		mImageView.setVisibility(View.VISIBLE);
-
-	}
-
-	private void galleryAddPic() {
-		    Intent mediaScanIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-			File f = new File(mCurrentPhotoPath);
-		    Uri contentUri = Uri.fromFile(f);
-		    mediaScanIntent.setData(contentUri);
-		    this.sendBroadcast(mediaScanIntent);
-	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -213,15 +170,7 @@ public class MainActivity extends Activity {
 
 	}
 
-	private void handleBigCameraPhoto() {
 
-		if (mCurrentPhotoPath != null) {
-			setPic();
-			galleryAddPic();
-			mCurrentPhotoPath = null;
-		}
-
-	}
 	Button.OnClickListener mTakePicOnClickListener = 
 			new Button.OnClickListener() {
 			@Override
@@ -259,13 +208,22 @@ public class MainActivity extends Activity {
 			if (resultCode == RESULT_OK) {
 				// Project name entered
 				String newText = data.getStringExtra(EnterNameActivity.PUBLIC_STATIC_STRING_IDENTIFIER);
+				
+				Intent annotate = new Intent(this,AnnotationActivity.class);
+				annotate.putExtra("PROJECT_NAME",newText);
+				annotate.putExtra("IMAGE_PATH",mCurrentPhotoPath);
+				
+				startActivityForResult(annotate, ANNOTATE_ACTIVITY_REQUEST_CODE);
+				
+				//reset photopath variable
+				mCurrentPhotoPath = null;
 			}
 		}
 
 		}
 
 	}
-/*		@Override
+	/*@Override
 		protected void onSaveInstanceState(Bundle outState) {
 			outState.putParcelable(BITMAP_STORAGE_KEY, mImageBitmap);
 			outState.putParcelable(VIDEO_STORAGE_KEY, mVideoUri);
