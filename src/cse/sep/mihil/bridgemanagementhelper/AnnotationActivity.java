@@ -9,7 +9,9 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 public class AnnotationActivity extends Activity {
 
@@ -28,6 +30,15 @@ public class AnnotationActivity extends Activity {
 		projectName = getIntent().getStringExtra("PROJECT_NAME");
 		
 		handleBigCameraPhoto();
+		
+		Spinner spinner = (Spinner) findViewById(R.id.selection_spinner);
+		// Create an ArrayAdapter using the string array and a default spinner layout
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+		        R.array.selection_array, R.layout.spinner_layout);
+		// Specify the layout to use when the list of choices appears
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+		// Apply the adapter to the spinner
+		spinner.setAdapter(adapter);
 		
 		
 	}

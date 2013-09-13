@@ -12,5 +12,16 @@
     <string name="enter_project_name">Enter Project Name :</string>
     <string name="annotate">Annotate</string>
     <string name="cannot">Cannot</string>
+      <string-array name="selection_array">
+          <item>Select type</item>
+        <item>strut</item>
+        <item>joint</item>
+        <item>railing</item>
+        <item>step</item>
+        <item>kerb</item>
+        <item>retainer</item>
+        <item>connector</item>
+        
+    </string-array>
 
 </resources>
