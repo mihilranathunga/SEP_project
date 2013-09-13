@@ -19,12 +19,14 @@
     	
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/select_image"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:drawableLeft="@drawable/existing_images"
-        android:text="@string/existing_images" />
+        android:text="@string/existing_images" 
+        android:onClick= "sendMessage"
+        />
 
     <Button
         android:id="@+id/button2"
