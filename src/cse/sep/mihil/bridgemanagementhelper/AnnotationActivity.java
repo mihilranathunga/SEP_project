@@ -29,6 +29,9 @@ public class AnnotationActivity extends Activity {
 		photoPath = getIntent().getStringExtra("IMAGE_PATH");
 		projectName = getIntent().getStringExtra("PROJECT_NAME");
 		
+		// change title of the activity
+		setTitle(projectName);
+		
 		handleBigCameraPhoto();
 		
 		Spinner spinner = (Spinner) findViewById(R.id.selection_spinner);
