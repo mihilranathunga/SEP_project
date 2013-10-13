@@ -17,6 +17,8 @@ public class EnterNameActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_entername);
 	}
+	
+	// ok button click
 
 	public void sendOk(View view) {
 
@@ -28,6 +30,8 @@ public class EnterNameActivity extends Activity {
 		finish();
 	}
 
+	// cancel button click
+	
 	public void sendCancel(View view) {
 
 		this.finish();

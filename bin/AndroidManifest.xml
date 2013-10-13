@@ -3,12 +3,13 @@
     package="cse.sep.mihil.bridgemanagementhelper"
     android:versionCode="1"
     android:versionName="1.0" >
-    
- <uses-feature android:name="android.hardware.camera" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="10"
         android:targetSdkVersion="17" />
 
     <application
@@ -25,13 +26,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-         <activity
-            android:name="cse.sep.mihil.bridgemanagementhelper.AnnotationActivity">     
+        <activity android:name="cse.sep.mihil.bridgemanagementhelper.AnnotationActivity" >
         </activity>
-        <activity 
-            android:name="cse.sep.mihil.bridgemanagementhelper.EnterNameActivity" 
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" > 
-            </activity>      
-        </application>
+        <activity
+            android:name="cse.sep.mihil.bridgemanagementhelper.EnterNameActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="cse.sep.mihil.bridgemanagementhelper.ImageEditActivity"
+            android:background="#CCFF0000"
+            android:label="@string/title_activity_image_edit"
+            android:parentActivityName="cse.sep.mihil.bridgemanagementhelper.AnnotationActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cse.sep.mihil.bridgemanagementhelper.AnnotationActivity" />
+        </activity>
+        <activity
+            android:name="cse.sep.mihil.bridgemanagementhelper.ImageAnnotateActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_image_annotate"
+            android:parentActivityName="cse.sep.mihil.bridgemanagementhelper.AnnotationActivity"
+            android:theme="@style/FullscreenTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cse.sep.mihil.bridgemanagementhelper.AnnotationActivity" />
+        </activity>
+    </application>
 
 </manifest>

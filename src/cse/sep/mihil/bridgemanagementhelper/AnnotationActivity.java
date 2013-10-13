@@ -2,21 +2,24 @@ package cse.sep.mihil.bridgemanagementhelper;
 
 import java.io.File;
 
-import android.app.Activity;
+import android.app.*;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.Spinner;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.*;
 
 public class AnnotationActivity extends Activity {
 
 	private String photoPath;
 	private String projectName;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,8 @@ public class AnnotationActivity extends Activity {
 		// Apply the adapter to the spinner
 		spinner.setAdapter(adapter);
 		
+		
+ 
 		
 	}
 	
@@ -99,6 +104,21 @@ public class AnnotationActivity extends Activity {
 		iview.setImageBitmap(bitmap);
 		iview.setVisibility(View.VISIBLE);
 
+	}
+	public void annotate(View view){
+		
+		// get bitmap in image view
+		ImageView iview = (ImageView)findViewById(R.id.taken_image);
+		BitmapDrawable drawable = (BitmapDrawable)iview.getDrawable();
+		Bitmap bitmap = drawable.getBitmap();
+		
+		// pass bitmap and projectname to image edit intent
+		Intent intent = new Intent(this, ImageEditActivity.class);
+		intent.putExtra("IMAGE_NAME", projectName);
+		intent.putExtra("IMAGE", bitmap);
+		startActivity(intent);
+		
+		
 	}
 
 }

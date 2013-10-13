@@ -23,5 +23,35 @@
         <item>retainer</item>
         <item>connector</item>
     </string-array>
+    <string-array name="size_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="color_array">
+        <item>Color</item>
+        <item>Black</item>
+        <item>White</item>
+        <item>Grey</item>
+        <item>Yellow</item>
+        <item>Red</item>
+        <item>Blue</item>
+    </string-array>
+    <string-array name="allignment_array">
+        <item>Upper Left</item>
+        <item>Upper Right</item>
+        <item>Down Left</item>
+        <item>Down Right</item>
+        <item>Middle</item>
+    </string-array>
+
+    <string name="title_activity_image_edit">ImageEdit</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="Annotate_text">Text</string>
+    <string name="title_activity_image_annotate">ImageAnnotateActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>
