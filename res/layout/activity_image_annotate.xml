@@ -7,11 +7,14 @@
 
     <!--
          The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc.
-    -->
+         is needed to present your content, e.g. VideoView, SurfaceView, TextureView etc
+         -->
 
-    <TextView
+
+    <!--
+         <TextView
+        
+        
         android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,11 +24,19 @@
         android:textColor="#33b5e5"
         android:textSize="50sp"
         android:textStyle="bold" />
+    -->
+
+    <ImageView
+        android:id="@+id/edit_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:keepScreenOn="true" >
+    </ImageView>
 
     <!--
          This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows.
-    -->
+         android:fitsSystemWindows. -->
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -35,20 +46,50 @@
         <LinearLayout
             android:id="@+id/fullscreen_content_controls"
             style="?buttonBarStyle"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
+            android:layout_gravity="left|center_vertical"
             android:background="@color/black_overlay"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             tools:ignore="UselessParent" >
 
-            <Button
-                android:id="@+id/dummy_button"
-                style="?buttonBarButtonStyle"
-                android:layout_width="0dp"
+            <EditText
+                android:id="@+id/annotate_text"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/dummy_button" />
+                android:hint="@string/Annotate_text" >
+            </EditText>
+
+            <Spinner
+                android:id="@+id/size_spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/color_spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/allign_spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/button1"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:onClick="sendConfirm"
+                android:text="@string/confirm" />
+
+            <Button
+                android:id="@+id/button2"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:onClick="sendNotConfirm"
+                android:text="@string/cancel" />
         </LinearLayout>
     </FrameLayout>
 

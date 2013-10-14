@@ -20,6 +20,8 @@ public class AnnotationActivity extends Activity {
 	private String photoPath;
 	private String projectName;
 	
+	private static final int EDIT_PHOTO = 35;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +58,7 @@ public class AnnotationActivity extends Activity {
 		if (photoPath != null) {
 			setPic();
 			galleryAddPic();
-			photoPath = null;
+			//photoPath = null;
 		}
 
 	}
@@ -113,12 +115,43 @@ public class AnnotationActivity extends Activity {
 		Bitmap bitmap = drawable.getBitmap();
 		
 		// pass bitmap and projectname to image edit intent
-		Intent intent = new Intent(this, ImageEditActivity.class);
+		Intent intent = new Intent(this, ImageAnnotateActivity.class);
 		intent.putExtra("IMAGE_NAME", projectName);
 		intent.putExtra("IMAGE", bitmap);
-		startActivity(intent);
+		startActivityForResult(intent,EDIT_PHOTO);
 		
 		
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		
+		switch (requestCode) {
+		
+		// get's result from annotation
+		
+		case EDIT_PHOTO: {
+			if (resultCode == RESULT_OK & data != null) {
+				Bitmap bitmap = (Bitmap)data.getParcelableExtra("EDITED_IMAGE");
+				/* Associate the Bitmap to the ImageView */
+				ImageView iview = (ImageView)findViewById(R.id.taken_image);
+				iview.setImageBitmap(bitmap);
+				iview.setVisibility(View.VISIBLE);
+			}
+		}
+		break;
+		
+		default:
+			break;
+		
+	}
+	}
+	
+	public void resetImage(View view){
+		
+		handleBigCameraPhoto();
 	}
 
 }

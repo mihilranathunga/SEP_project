@@ -6,14 +6,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.*;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 
 public class ImageEditActivity extends Activity {
@@ -158,5 +161,24 @@ public class ImageEditActivity extends Activity {
 		    }
 
 		  }
+		public void sendOk(View view) {
+
+			Intent resultIntent = new Intent();
+			// get bitmap in image view
+			ImageView iview = (ImageView)findViewById(R.id.taken_image);
+			BitmapDrawable drawable = (BitmapDrawable)iview.getDrawable();
+			Bitmap bitmap = drawable.getBitmap();
+			
+			resultIntent.putExtra("EDITED_IMAGE", bitmap);
+			setResult(Activity.RESULT_OK, resultIntent);
+			finish();
+		}
+
+		// cancel button click
+		
+		public void sendCancel(View view) {
+
+			this.finish();
+		}
 
 }

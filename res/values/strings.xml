@@ -24,8 +24,8 @@
         <item>connector</item>
     </string-array>
     <string-array name="size_array">
-        <item>1</item>
         <item>2</item>
+        <item>1</item>
         <item>3</item>
         <item>4</item>
         <item>5</item>
@@ -34,7 +34,7 @@
         <item>Color</item>
         <item>Black</item>
         <item>White</item>
-        <item>Grey</item>
+        <item>Gray</item>
         <item>Yellow</item>
         <item>Red</item>
         <item>Blue</item>
@@ -44,7 +44,7 @@
         <item>Upper Right</item>
         <item>Down Left</item>
         <item>Down Right</item>
-        <item>Middle</item>
+        <item>Center</item>
     </string-array>
 
     <string name="title_activity_image_edit">ImageEdit</string>

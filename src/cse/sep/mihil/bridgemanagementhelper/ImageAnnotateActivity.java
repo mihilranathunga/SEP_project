@@ -4,12 +4,26 @@ import cse.sep.mihil.bridgemanagementhelper.util.SystemUiHider;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.Align;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
 import android.support.v4.app.NavUtils;
 
 /**
@@ -47,6 +61,10 @@ public class ImageAnnotateActivity extends Activity {
 	 */
 	private SystemUiHider mSystemUiHider;
 
+	private static final int EDIT_PHOTO = 35;
+
+	public Bitmap bitmap;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,7 +73,7 @@ public class ImageAnnotateActivity extends Activity {
 		setupActionBar();
 
 		final View controlsView = findViewById(R.id.fullscreen_content_controls);
-		final View contentView = findViewById(R.id.fullscreen_content);
+		final View contentView = (View) findViewById(R.id.edit_image);
 
 		// Set up an instance of SystemUiHider to control the system UI for
 		// this activity.
@@ -117,8 +135,61 @@ public class ImageAnnotateActivity extends Activity {
 		// Upon interacting with UI controls, delay any scheduled hide()
 		// operations to prevent the jarring behavior of controls going away
 		// while interacting with the UI.
-		findViewById(R.id.dummy_button).setOnTouchListener(
+		findViewById(R.id.color_spinner).setOnTouchListener(
 				mDelayHideTouchListener);
+		findViewById(R.id.size_spinner).setOnTouchListener(
+				mDelayHideTouchListener);
+		findViewById(R.id.allign_spinner).setOnTouchListener(
+				mDelayHideTouchListener);
+
+		/* MY CODE */
+
+		// get bitmap and project name
+
+		bitmap = (Bitmap) getIntent().getParcelableExtra("IMAGE");
+		String projectName = getIntent().getStringExtra("PROJECT_NAME");
+
+		// Associate the Bitmap to the ImageView
+
+		ImageView iview = (ImageView) findViewById(R.id.edit_image);
+
+		iview.setImageBitmap(bitmap);
+		iview.setVisibility(View.VISIBLE);
+
+		// create spinner
+
+		Spinner sizeSpinner = (Spinner) findViewById(R.id.size_spinner);
+		// Create an ArrayAdapter using the string array and a default spinner
+		// layout
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+				this, R.array.size_array, R.layout.spinner_layout);
+		// Specify the layout to use when the list of choices appears
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+		// Apply the adapter to the spinner
+		sizeSpinner.setAdapter(adapter);
+
+		// create spinner
+		Spinner colorSpinner = (Spinner) findViewById(R.id.color_spinner);
+		// Create an ArrayAdapter using the string array and a default spinner
+		// layout
+		adapter = ArrayAdapter.createFromResource(this, R.array.color_array,
+				R.layout.spinner_layout);
+		// Specify the layout to use when the list of choices appears
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+		// Apply the adapter to the spinner
+		colorSpinner.setAdapter(adapter);
+
+		// create spinner
+		Spinner allignSpinner = (Spinner) findViewById(R.id.allign_spinner);
+		// Create an ArrayAdapter using the string array and a default spinner
+		// layout
+		adapter = ArrayAdapter.createFromResource(this,
+				R.array.allignment_array, R.layout.spinner_layout);
+		// Specify the layout to use when the list of choices appears
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+		// Apply the adapter to the spinner
+		allignSpinner.setAdapter(adapter);
+
 	}
 
 	@Override
@@ -191,5 +262,190 @@ public class ImageAnnotateActivity extends Activity {
 	private void delayedHide(int delayMillis) {
 		mHideHandler.removeCallbacks(mHideRunnable);
 		mHideHandler.postDelayed(mHideRunnable, delayMillis);
+	}
+
+	public Bitmap drawTextToBitmap(Context mContext, Bitmap bmp, String mText) {
+		try {
+			Resources resources = mContext.getResources();
+			//float scale = resources.getDisplayMetrics().density;
+
+			Spinner spin1 = (Spinner) findViewById(R.id.size_spinner);
+			Spinner spin2 = (Spinner) findViewById(R.id.color_spinner);
+			Spinner spin3 = (Spinner) findViewById(R.id.allign_spinner);
+
+			int textSize = Integer.parseInt(spin1.getItemAtPosition(
+					spin1.getSelectedItemPosition()).toString());
+			String textColor = spin2.getItemAtPosition(
+					spin2.getSelectedItemPosition()).toString();
+			String textAllign = spin3.getItemAtPosition(
+					spin3.getSelectedItemPosition()).toString();
+
+			android.graphics.Bitmap.Config bitmapConfig = bmp.getConfig();
+
+			// set default bitmap config if none
+			if (bitmapConfig == null) {
+				bitmapConfig = android.graphics.Bitmap.Config.ARGB_8888;
+			}
+
+			// resource bitmaps are imutable,
+			// so we need to convert it to mutable one
+			Bitmap bitmap = bmp.copy(bitmapConfig, true);
+
+			Canvas canvas = new Canvas(bitmap);
+
+			// new antialised Paint
+			Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+			// get spinner size value
+			int size;
+
+			switch (textSize) {
+
+			case 1:
+				size = 1;
+				break;
+			case 2:
+				size = 2;
+				break;
+			case 3:
+				size = 3;
+				break;
+			case 4:
+				size = 4;
+				break;
+			case 6:
+				size = 5;
+				break;
+
+			default:
+				size = 1;
+				break;
+			}
+
+			// text size in pixels
+			paint.setTextSize((int) (size*12));
+
+			// get spinner color and set
+			
+			int color;
+
+			if (textColor.equals("Black")) {
+
+				color = Color.BLACK;
+
+			} else if (textColor.equals("White")) {
+
+				color = Color.WHITE;
+
+			} else if (textColor.equals("Gray")) {
+				color = Color.GRAY;
+
+			} else if (textColor.equals("Yellow")) {
+				color = Color.YELLOW;
+
+			} else if (textColor.equals("Red")) {
+				color = Color.RED;
+
+			} else if (textColor.equals("Blue")) {
+				color = Color.BLUE;
+
+			} else {
+
+				color = Color.rgb(110, 110, 110);
+			}
+			
+			// set paint
+			
+			paint.setColor(color);
+
+			// text shadow
+			paint.setShadowLayer(1f, 0f, 1f, Color.DKGRAY);
+			
+			// draw text to the Canvas center
+						Rect textBounds = new Rect();
+						paint.getTextBounds(mText, 0, mText.length(), textBounds);
+						int x = 0,y = 0;
+			
+
+			// allign text
+						
+						paint.setTextAlign(Align.LEFT);
+
+			if (textAllign.equals("Upper Left")) {
+
+				 x =  0 - textBounds.left;
+				 y =  0 - textBounds.top;
+				
+	
+
+			} else if (textAllign.equals("Upper Right")) {
+				
+				 x =  bitmap.getWidth()  - textBounds.right;
+				 y =  0 - textBounds.top;
+
+
+			} else if (textAllign.equals("Down Left")) {
+				
+				x =  0  - textBounds.left;
+				y =  bitmap.getHeight() - textBounds.bottom;
+
+
+			} else if (textAllign.equals("Down Right")) {
+				
+				x =  bitmap.getWidth()  - textBounds.right;
+				y =  bitmap.getHeight() - textBounds.bottom;
+
+
+			} else if (textAllign.equals("Center")) {
+				
+				x = (bitmap.getWidth() - textBounds.width())/2;
+	            y = (bitmap.getHeight() +textBounds.height())/2;
+
+
+			} else {
+
+				x = (bitmap.getWidth() - textBounds.width())/6;
+	            y = (bitmap.getHeight() + textBounds.height())/5;
+			}
+
+			canvas.drawText(mText, x , y , paint);
+
+			return bitmap;
+		} catch (Exception e) {
+			// TODO: handle exception
+
+			return null;
+		}
+
+	}
+
+	public void sendConfirm(View view) {
+
+		EditText text1 = (EditText) findViewById(R.id.annotate_text);
+
+		Bitmap bmp = drawTextToBitmap(this, bitmap, text1.getText().toString());
+
+		ImageView iview = (ImageView) findViewById(R.id.edit_image);
+		// Associate the annonated Bitmap to the ImageView
+
+		iview.setImageBitmap(bmp);
+		iview.setVisibility(View.VISIBLE);
+
+		Intent resultIntent = new Intent();
+		// get bitmap in image view
+		iview = (ImageView) findViewById(R.id.edit_image);
+		BitmapDrawable drawable = (BitmapDrawable) iview.getDrawable();
+		Bitmap bitmap = drawable.getBitmap();
+
+		resultIntent.putExtra("EDITED_IMAGE", bitmap);
+		setResult(Activity.RESULT_OK, resultIntent);
+		finish();
+	}
+
+	// cancel button click
+
+	public void sendNotConfirm(View view) {
+
+		this.finish();
 	}
 }

@@ -12,39 +12,35 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="annotate"
             android:paddingBottom="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
-            android:text="@string/annotate" 
-            android:onClick="annotate" 	/>
-        
-         <Spinner
+            android:text="@string/annotate" />
+
+        <Spinner
             android:id="@+id/selection_spinner"
             android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/button1"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-           />
-
-         <Button
-             android:id="@+id/button1"
-             style="?android:attr/buttonStyleSmall"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Reset" />
-
+            android:onClick="resetImage"
+            android:text="Reset" />
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent" >
 
-       
-
         <ImageView
             android:id="@+id/taken_image"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            />
+            android:layout_height="fill_parent" />
     </RelativeLayout>
 
 </LinearLayout>
