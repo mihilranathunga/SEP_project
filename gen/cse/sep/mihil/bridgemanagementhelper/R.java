@@ -45,37 +45,64 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ic_launcher=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a000f;
-        public static final int allign_spinner=0x7f0a000a;
-        public static final int annotate_text=0x7f0a0007;
+        public static final int action_settings=0x7f0a0029;
+        public static final int allign_spinner=0x7f0a0025;
+        public static final int annotate_text=0x7f0a0022;
         public static final int button1=0x7f0a0001;
-        public static final int button2=0x7f0a000b;
-        public static final int color_spinner=0x7f0a0009;
-        public static final int confirm=0x7f0a0004;
-        public static final int edit_image=0x7f0a0005;
-        public static final int enter_project_name=0x7f0a0003;
-        public static final int fullscreen_content_controls=0x7f0a0006;
-        public static final int new_project_button=0x7f0a000c;
-        public static final int select_image=0x7f0a000d;
+        public static final int button2=0x7f0a0002;
+        public static final int color_spinner=0x7f0a0024;
+        public static final int confirm=0x7f0a001f;
+        public static final int dataCancel=0x7f0a001d;
+        public static final int dataOk=0x7f0a001c;
+        public static final int datePicker1=0x7f0a000e;
+        public static final int edit_image=0x7f0a0020;
+        public static final int enter_project_name=0x7f0a001e;
+        public static final int fullscreen_content_controls=0x7f0a0021;
+        public static final int madein=0x7f0a0017;
+        public static final int manuf=0x7f0a0014;
+        public static final int new_project_button=0x7f0a0026;
+        public static final int partname=0x7f0a000b;
+        public static final int price=0x7f0a001a;
+        public static final int save=0x7f0a0003;
+        public static final int scrollView1=0x7f0a0005;
+        public static final int select_image=0x7f0a0027;
         public static final int selection_spinner=0x7f0a0000;
-        public static final int size_spinner=0x7f0a0008;
-        public static final int spinnerTarget=0x7f0a000e;
-        public static final int taken_image=0x7f0a0002;
+        public static final int size_spinner=0x7f0a0023;
+        public static final int spinnerTarget=0x7f0a0028;
+        public static final int tableRow1=0x7f0a0009;
+        public static final int tableRow2=0x7f0a000f;
+        public static final int tableRow3=0x7f0a0012;
+        public static final int tableRow4=0x7f0a0015;
+        public static final int tableRow5=0x7f0a0018;
+        public static final int tableRow7=0x7f0a001b;
+        public static final int tableRow8=0x7f0a000c;
+        public static final int tableRow9=0x7f0a0006;
+        public static final int taken_image=0x7f0a0004;
+        public static final int textView1=0x7f0a000d;
+        public static final int textView2=0x7f0a0010;
+        public static final int textView3=0x7f0a0013;
+        public static final int textView4=0x7f0a0016;
+        public static final int textView5=0x7f0a0019;
+        public static final int textView7=0x7f0a000a;
+        public static final int textView8=0x7f0a0007;
+        public static final int type=0x7f0a0008;
+        public static final int weight=0x7f0a0011;
     }
     public static final class layout {
         public static final int activity_annotation=0x7f030000;
-        public static final int activity_entername=0x7f030001;
-        public static final int activity_image_annotate=0x7f030002;
-        public static final int activity_image_edit=0x7f030003;
+        public static final int activity_data=0x7f030001;
+        public static final int activity_entername=0x7f030002;
+        public static final int activity_image_annotate=0x7f030003;
         public static final int activity_main=0x7f030004;
         public static final int spinner_layout=0x7f030005;
     }
     public static final class menu {
-        public static final int image_edit=0x7f090000;
-        public static final int main=0x7f090001;
+        public static final int data=0x7f090000;
+        public static final int image_edit=0x7f090001;
+        public static final int main=0x7f090002;
     }
     public static final class string {
-        public static final int Annotate_text=0x7f06000d;
+        public static final int Annotate_text=0x7f060015;
         public static final int action_settings=0x7f060001;
         public static final int album_name=0x7f060007;
         public static final int annotate=0x7f060009;
@@ -83,15 +110,24 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int cancel=0x7f060003;
         public static final int cannot=0x7f06000a;
         public static final int confirm=0x7f060002;
-        public static final int dummy_button=0x7f06000f;
-        public static final int dummy_content=0x7f060010;
+        public static final int date=0x7f060011;
+        public static final int dummy_button=0x7f060017;
+        public static final int dummy_content=0x7f060018;
         public static final int enter_project_name=0x7f060008;
         public static final int existing_images=0x7f060005;
         public static final int from_the_database=0x7f060006;
-        public static final int hello_world=0x7f06000c;
+        public static final int hello_world=0x7f060014;
+        public static final int madein=0x7f06000f;
+        public static final int manufac=0x7f06000e;
         public static final int new_project_button=0x7f060004;
-        public static final int title_activity_image_annotate=0x7f06000e;
-        public static final int title_activity_image_edit=0x7f06000b;
+        public static final int part=0x7f06000c;
+        public static final int partName=0x7f06000d;
+        public static final int price=0x7f060010;
+        public static final int save=0x7f06000b;
+        public static final int title_activity_data=0x7f060019;
+        public static final int title_activity_image_annotate=0x7f060016;
+        public static final int title_activity_image_edit=0x7f060013;
+        public static final int weight=0x7f060012;
     }
     public static final class style {
         /** 

@@ -19,6 +19,8 @@ public class AnnotationActivity extends Activity {
 
 	private String photoPath;
 	private String projectName;
+	//private String partType;
+	public Bitmap bitmap;
 	
 	private static final int EDIT_PHOTO = 35;
 	
@@ -47,6 +49,17 @@ public class AnnotationActivity extends Activity {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
 		// Apply the adapter to the spinner
 		spinner.setAdapter(adapter);
+		
+		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+		    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+		        Object item = parent.getItemAtPosition(pos);
+		        data(item.toString());
+		        
+		        
+		    }
+		    public void onNothingSelected(AdapterView<?> parent) {
+		    }
+		});
 		
 		
  
@@ -100,7 +113,7 @@ public class AnnotationActivity extends Activity {
 		bmOptions.inPurgeable = true;
 
 		/* Decode the JPEG file into a Bitmap */
-		Bitmap bitmap = BitmapFactory.decodeFile(photoPath, bmOptions);
+		bitmap = BitmapFactory.decodeFile(photoPath, bmOptions);
 		
 		/* Associate the Bitmap to the ImageView */
 		iview.setImageBitmap(bitmap);
@@ -134,7 +147,7 @@ public class AnnotationActivity extends Activity {
 		
 		case EDIT_PHOTO: {
 			if (resultCode == RESULT_OK & data != null) {
-				Bitmap bitmap = (Bitmap)data.getParcelableExtra("EDITED_IMAGE");
+				bitmap = (Bitmap)data.getParcelableExtra("EDITED_IMAGE");
 				/* Associate the Bitmap to the ImageView */
 				ImageView iview = (ImageView)findViewById(R.id.taken_image);
 				iview.setImageBitmap(bitmap);
@@ -152,6 +165,30 @@ public class AnnotationActivity extends Activity {
 	public void resetImage(View view){
 		
 		handleBigCameraPhoto();
+	}
+	public void openData(View view){
+		
+		Spinner spinner = (Spinner) findViewById(R.id.selection_spinner);
+		String partType = spinner.getItemAtPosition(spinner.getSelectedItemPosition()).toString();
+		
+		data(partType);
+		
+	}
+	public void data(String partType){
+		
+		// work if spinner item was selected
+		
+		if(!partType.equals("Select type")){
+		
+		Intent intent = new Intent(this,DataActivity.class);
+		intent.putExtra("PROJECT_NAME", projectName);
+		intent.putExtra("TYPE", partType);
+		startActivity(intent);
+		}
+		
+	}
+	public void saveData(View view){
+		
 	}
 
 }

@@ -33,20 +33,19 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
         </activity>
         <activity
-            android:name="cse.sep.mihil.bridgemanagementhelper.ImageEditActivity"
-            android:background="#CCFF0000"
-            android:label="@string/title_activity_image_edit"
-            android:parentActivityName="cse.sep.mihil.bridgemanagementhelper.AnnotationActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="cse.sep.mihil.bridgemanagementhelper.AnnotationActivity" />
-        </activity>
-        <activity
             android:name="cse.sep.mihil.bridgemanagementhelper.ImageAnnotateActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_image_annotate"
             android:parentActivityName="cse.sep.mihil.bridgemanagementhelper.AnnotationActivity"
             android:theme="@style/FullscreenTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cse.sep.mihil.bridgemanagementhelper.AnnotationActivity" />
+        </activity>
+        <activity
+            android:name="cse.sep.mihil.bridgemanagementhelper.DataActivity"
+            android:label="@string/title_activity_data"
+            android:parentActivityName="cse.sep.mihil.bridgemanagementhelper.AnnotationActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cse.sep.mihil.bridgemanagementhelper.AnnotationActivity" />

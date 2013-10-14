@@ -12,6 +12,16 @@
     <string name="enter_project_name">Enter Project Name :</string>
     <string name="annotate">Annotate</string>
     <string name="cannot">Cannot</string>
+    <string name="save">Save</string>
+    
+      <string name="part">Part Type</string>
+    <string name="partName">Name</string>
+    <string name="manufac">Manufacturer</string>
+    <string name="madein">Made In</string>
+    <string name="price">Price Rs.</string>
+    <string name="date">Date</string>
+    <string name="weight">Weight kg</string>
+    
 
     <string-array name="selection_array">
         <item>Select type</item>
@@ -53,5 +63,6 @@
     <string name="title_activity_image_annotate">ImageAnnotateActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_data">DataActivity</string>
 
 </resources>

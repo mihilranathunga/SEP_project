@@ -24,8 +24,7 @@ public class EnterNameActivity extends Activity {
 
 		Intent resultIntent = new Intent();
 		EditText pname = (EditText) findViewById(R.id.enter_project_name);
-		resultIntent.putExtra(PUBLIC_STATIC_STRING_IDENTIFIER, pname.getText()
-				.toString());
+		resultIntent.putExtra(PUBLIC_STATIC_STRING_IDENTIFIER, pname.getText().toString());
 		setResult(Activity.RESULT_OK, resultIntent);
 		finish();
 	}

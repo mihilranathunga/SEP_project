@@ -57,8 +57,9 @@
                 android:id="@+id/annotate_text"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/Annotate_text" >
-            </EditText>
+                android:hint="@string/Annotate_text"
+                android:imeOptions="actionDone"/>"
+  
 
             <Spinner
                 android:id="@+id/size_spinner"
