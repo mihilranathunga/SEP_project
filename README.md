@@ -13,3 +13,6 @@ This was intended to work in 2.3 Gingerbread version of Android and may not work
 
 
 I pushed my last commits to this repo on 24th march 2014 6 months after the project
+
+
+Note: Use APK from 3rd branch to get the most recently built APK
