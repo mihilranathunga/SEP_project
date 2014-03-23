@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +25,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.VideoView;
+
 
 public class MainActivity extends Activity {
 
@@ -98,9 +98,6 @@ public class MainActivity extends Activity {
 		return f;
 	}
 
-
-
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -130,6 +127,65 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	// get image capture intent
+	private void dispatchTakePictureIntent(int actionCode) {			
+		   // create Intent to take a picture and return control to the calling application
+	    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+	    fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file to save the image
+	    intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri.toString()); // set the image file name
+
+	    // start the image capture Intent
+	    startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
+	}
+	
+	
+		@Override
+		protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		    if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
+		        if (resultCode == RESULT_OK) {
+		            // Image captured and saved to fileUri specified in the Intent
+		            Toast.makeText(this, "Image saved to:\n" +
+		                     data.getData(), Toast.LENGTH_LONG).show();
+		        } else if (resultCode == RESULT_CANCELED) {
+		            // User cancelled the image capture
+		        } else {
+		            // Image capture failed, advise user
+		        }
+		    }
+		}
+	
+		
+
+	public static boolean isIntentAvailable(Context context, String action) {
+	    final PackageManager packageManager = context.getPackageManager();
+	    final Intent intent = new Intent(action);
+	    List<ResolveInfo> list =
+	            packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+	    return list.size() > 0;
+	}
+	
+	public void sendMessage(View view ){
+		
+		dispatchTakePictureIntent(ACTION_TAKE_PHOTO_B);
+		
+	}
+	
+	/** Create a file Uri for saving an image or video */
+	private static Uri getOutputMediaFileUri(int type){
+	      return Uri.fromFile(getOutputMediaFile(type));
+	}
+
+	/** Create a File for saving an image or video */
+	private static File getOutputMediaFile(int type){
+	    // To be safe, you should check that the SDCard is mounted
+	    // using Environment.getExternalStorageState() before doing this.
+
+	    File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
+	              Environment.DIRECTORY_PICTURES), "MyCameraApp");
+	    // This location works best if you want the created images to be shared
+	    // between applications and persist after your app has been uninstalled.
 
 	// get image capture intent
 	private void dispatchTakePictureIntent(int actionCode) {
@@ -290,5 +346,6 @@ public class MainActivity extends Activity {
 			btn.setClickable(false);
 		}
 	}
-
 }
+	
+	
