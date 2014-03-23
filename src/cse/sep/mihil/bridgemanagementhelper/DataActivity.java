@@ -13,7 +13,7 @@ import android.annotation.TargetApi;
 import android.os.Build;
 
 public class DataActivity extends Activity {
-	
+
 	String partType;
 	String projectName;
 
@@ -23,36 +23,50 @@ public class DataActivity extends Activity {
 		setContentView(R.layout.activity_data);
 		// Show the Up button in the action bar.
 		setupActionBar();
-		
+
 		partType = getIntent().getStringExtra("TYPE");
 		projectName = getIntent().getStringExtra("PROJECT_NAME");
-		
+
 		// change title of the activity
-				setTitle(projectName);
-				
-		EditText type = (EditText)findViewById(R.id.type);
+		setTitle(projectName);
+
+		EditText type = (EditText) findViewById(R.id.type);
 		type.setText(partType);
-		
-		EditText name = (EditText)findViewById(R.id.partname);
+
+		EditText name = (EditText) findViewById(R.id.partname);
 		name.setText(projectName);
-		
-		/*//restore data
-		if(savedInstanceState != null){
-			
-		EditText weight = (EditText)findViewById(R.id.weight);
-		EditText man = (EditText)findViewById(R.id.manuf);
-			
-		CharSequence wgt = savedInstanceState.getCharSequence("weight");
-		CharSequence manf = savedInstanceState.getCharSequence("man");
-		
-		if(wgt != null){
-			weight.setText(wgt);
+
+		// restore saved data
+
+		if (savedInstanceState != null) {
+
+			EditText wgt = (EditText) findViewById(R.id.weight);
+			EditText man = (EditText) findViewById(R.id.manuf);
+			EditText made = (EditText) findViewById(R.id.madein);
+			EditText prc = (EditText) findViewById(R.id.price);
+
+			CharSequence weight = savedInstanceState.getCharSequence("WGT");
+			CharSequence manufacturer = savedInstanceState
+					.getCharSequence("MAN");
+			CharSequence madeIn = savedInstanceState.getCharSequence("MADE");
+			CharSequence price = savedInstanceState.getCharSequence("PRC");
+
+			if (weight != null) {
+				wgt.setText(weight);
+			}
+			if (manufacturer != null) {
+				man.setText(manufacturer);
+			}
+			if (madeIn != null) {
+
+				made.setText(madeIn);
+			}
+			if (price != null) {
+
+				prc.setText(price);
+			}
 		}
-		if(manf != null){
-			man.setText(manf);
-		}
-		}*/
-		
+
 	}
 
 	/**
@@ -93,49 +107,49 @@ public class DataActivity extends Activity {
 	protected void onSaveInstanceState(Bundle outState) {
 		// TODO Auto-generated method stub
 		super.onSaveInstanceState(outState);
-		
+
 		// Store UI state to the savedInstanceState.
-		  // This bundle will be passed to onCreate on next call.  
-		
-		EditText weight = (EditText)findViewById(R.id.weight);
-		String wgt = weight.getText().toString();
+		// This bundle will be passed to onCreate on next call.
 
-		 EditText man = (EditText)findViewById(R.id.manuf);
-		 String manf = man.getText().toString();
+		EditText wgt = (EditText) findViewById(R.id.weight);
+		EditText man = (EditText) findViewById(R.id.manuf);
+		EditText made = (EditText) findViewById(R.id.madein);
+		EditText prc = (EditText) findViewById(R.id.price);
 
+		String weight = wgt.getText().toString();
+		String manufacturer = man.getText().toString();
+		String madeIn = made.getText().toString();
+		String price = prc.getText().toString();
 
-		 outState.putString("weight",wgt);
-		 outState.putString("man", manf);
-		 
-
+		outState.putString("WGT", weight);
+		outState.putString("MAN", manufacturer);
+		outState.putString("MADE", madeIn);
+		outState.putString("PRC", price);
 
 	}
-	
+
 	/*
+	 * 
+	 * @Override protected void onRestoreInstanceState(Bundle
+	 * savedInstanceState) { // TODO Auto-generated method stub
+	 * super.onRestoreInstanceState(savedInstanceState);
+	 * 
+	 * EditText weight = (EditText)findViewById(R.id.weight); EditText man =
+	 * (EditText)findViewById(R.id.manuf);
+	 * 
+	 * CharSequence wgt = savedInstanceState.getCharSequence("weight");
+	 * CharSequence manf = savedInstanceState.getCharSequence("man");
+	 * weight.setText(wgt); man.setText(manf); }
+	 */
+	public void saveState(View view) {
 
-	@Override
-	protected void onRestoreInstanceState(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onRestoreInstanceState(savedInstanceState);
-		
-		EditText weight = (EditText)findViewById(R.id.weight);
-		EditText man = (EditText)findViewById(R.id.manuf);
-			
-		CharSequence wgt = savedInstanceState.getCharSequence("weight");
-		CharSequence manf = savedInstanceState.getCharSequence("man");	
-			weight.setText(wgt);
-			man.setText(manf);
-	}
-	*/
-	public void saveState(View view){
-		
 		this.finish();
 	}
-	public void cancel(View view){
-		
-		finish();
-		
-	}
 
+	public void cancel(View view) {
+
+		finish();
+
+	}
 
 }

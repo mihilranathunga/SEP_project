@@ -1,6 +1,11 @@
 package cse.sep.mihil.bridgemanagementhelper;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import android.app.*;
 import android.content.Intent;
@@ -9,6 +14,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,9 +28,67 @@ public class AnnotationActivity extends Activity {
 	private String photoPath;
 	private String projectName;
 	//private String partType;
-	public Bitmap bitmap;
+	private Bitmap bitmap;
+	private String newFilepath;
+	
 	
 	private static final int EDIT_PHOTO = 35;
+	
+	private AlbumStorageDirFactory mAlbumStorageDirFactory = null;
+	private static final String JPEG_FILE_PREFIX = "IMG_";
+	private static final String JPEG_FILE_SUFFIX = ".jpg";
+
+	/* Photo album for this application */
+	private String getAlbumName() {
+		String album_name = getString(R.string.album_name);
+		return album_name;
+	}
+
+	private File getAlbumDir() {
+		File storageDir = null;
+
+		if (Environment.MEDIA_MOUNTED.equals(Environment
+				.getExternalStorageState())) {
+
+			storageDir = mAlbumStorageDirFactory
+					.getAlbumStorageDir(getAlbumName());
+
+			if (storageDir != null) {
+				if (!storageDir.mkdirs()) {
+					if (!storageDir.exists()) {
+						Log.d("CameraSample", "failed to create directory");
+						return null;
+					}
+				}
+			}
+
+		} else {
+			this.finish();
+			Log.v(getString(R.string.app_name),
+					"External storage is not mounted READ/WRITE.");
+		}
+
+		return storageDir;
+	}
+
+	private File createImageFile() throws IOException {
+		// Create an image file name
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
+				.format(new Date());
+		String imageFileName = JPEG_FILE_PREFIX + timeStamp + "_";
+		File albumF = getAlbumDir();
+		File imageF = File.createTempFile(imageFileName, JPEG_FILE_SUFFIX,
+				albumF);
+		return imageF;
+	}
+
+	private File setUpPhotoFile() throws IOException {
+
+		File f = createImageFile();
+		newFilepath = f.getAbsolutePath();
+
+		return f;
+	}
 	
 
 	@Override
@@ -188,7 +254,46 @@ public class AnnotationActivity extends Activity {
 		
 	}
 	public void saveData(View view){
+		//newFilepath = savebitmap(projectName);
+		//System.out.println(newFilepath);
 		
+		File f = null;
+
+		try {
+			f = setUpPhotoFile(); // create a file to save the image
+			newFilepath = f.getAbsolutePath();
+		} catch (IOException e) {
+			e.printStackTrace();
+			f = null;
+			newFilepath = null;
+		}
 	}
+	
+	 /*private String savebitmap(String filename) {
+	      String extStorageDirectory = Environment.getExternalStorageDirectory().toString();
+	      OutputStream outStream = null;
+
+	      File file = new File(filename + ".png");
+	      if (file.exists()) {
+	         file.delete();
+	         file = new File(extStorageDirectory, filename + ".png");
+	         Log.e("file exist", "" + file + ",Bitmap= " + filename);
+	      }
+	      try {
+
+	         outStream = new FileOutputStream(file);
+	         bitmap.compress(Bitmap.CompressFormat.PNG, 100, outStream);
+	         outStream.flush();
+	         outStream.close();
+	         
+	         bitmap.recycle();
+	         System.gc();
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      Log.e("file", "" + file);
+	      return file.getAbsolutePath();
+
+	   }*/
 
 }
