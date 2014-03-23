@@ -4,7 +4,7 @@
     <string name="app_name">Bridge Management Helper</string>
     <string name="action_settings">Settings</string>
     <string name="confirm">OK</string>
-     <string name="cancel">Cancel</string>
+    <string name="cancel">Cancel</string>
     <string name="new_project_button"> New image</string>
     <string name="existing_images"> Saved images</string>
     <string name="from_the_database">Database</string>
@@ -12,5 +12,56 @@
     <string name="enter_project_name">Enter Project Name :</string>
     <string name="annotate">Annotate</string>
     <string name="cannot">Cannot</string>
+    <string name="save">Save</string>
+    
+      <string name="part">Part Type</string>
+    <string name="partName">Name</string>
+    <string name="manufac">Manufacturer</string>
+    <string name="madein">Made In</string>
+    <string name="price">Price Rs.</string>
+    <string name="date">Date</string>
+    <string name="weight">Weight kg</string>
+
+    <string-array name="selection_array">
+        <item>Select type</item>
+        <item>strut</item>
+        <item>joint</item>
+        <item>railing</item>
+        <item>step</item>
+        <item>kerb</item>
+        <item>retainer</item>
+        <item>connector</item>
+    </string-array>
+    <string-array name="size_array">
+        <item>2</item>
+        <item>1</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="color_array">
+        <item>Color</item>
+        <item>Black</item>
+        <item>White</item>
+        <item>Gray</item>
+        <item>Yellow</item>
+        <item>Red</item>
+        <item>Blue</item>
+    </string-array>
+    <string-array name="allignment_array">
+        <item>Upper Left</item>
+        <item>Upper Right</item>
+        <item>Down Left</item>
+        <item>Down Right</item>
+        <item>Center</item>
+    </string-array>
+
+    <string name="title_activity_image_edit">ImageEdit</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="Annotate_text">Text</string>
+    <string name="title_activity_image_annotate">ImageAnnotateActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_data">DataActivity</string>
 
 </resources>

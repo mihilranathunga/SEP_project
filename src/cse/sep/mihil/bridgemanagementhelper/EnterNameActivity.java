@@ -16,17 +16,19 @@ public class EnterNameActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_entername);
-	}
+	}	
+	// ok button click
 
 	public void sendOk(View view) {
 
 		Intent resultIntent = new Intent();
 		EditText pname = (EditText) findViewById(R.id.enter_project_name);
-		resultIntent.putExtra(PUBLIC_STATIC_STRING_IDENTIFIER, pname.getText()
-				.toString());
+		resultIntent.putExtra(PUBLIC_STATIC_STRING_IDENTIFIER, pname.getText().toString());
 		setResult(Activity.RESULT_OK, resultIntent);
 		finish();
 	}
+
+	// cancel button click
 
 	public void sendCancel(View view) {
 
