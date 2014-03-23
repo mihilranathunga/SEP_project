@@ -30,6 +30,7 @@ public final class R {
         public static final int ic_launcher=0x7f020003;
     }
     public static final class id {
+
         public static final int action_settings=0x7f090006;
         public static final int button1=0x7f090004;
         public static final int button2=0x7f090005;
@@ -47,6 +48,7 @@ public final class R {
         public static final int main=0x7f080000;
     }
     public static final class string {
+
         public static final int action_settings=0x7f060001;
         public static final int album_name=0x7f060007;
         public static final int annotate=0x7f060009;
@@ -57,6 +59,7 @@ public final class R {
         public static final int existing_images=0x7f060005;
         public static final int from_the_database=0x7f060006;
         public static final int new_project_button=0x7f060004;
+
     }
     public static final class style {
         /** 

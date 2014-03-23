@@ -2,9 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cse.sep.mihil.bridgemanagementhelper"
     android:versionCode="1"
+<<<<<<< HEAD
     android:versionName="1.0" >
     
     <uses-feature android:name="android.hardware.camera" />
+=======
+    android:versionName="1.0" >
+    
+ <uses-feature android:name="android.hardware.camera" />
+>>>>>>> fd817679896bb33aa0765336b9f237f32c1f6197
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-sdk

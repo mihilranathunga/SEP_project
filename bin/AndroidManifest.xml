@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cse.sep.mihil.bridgemanagementhelper"
@@ -35,3 +36,42 @@
         </application>
 
 </manifest>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cse.sep.mihil.bridgemanagementhelper"
+    android:versionCode="1"
+    android:versionName="1.0" >
+ <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="cse.sep.mihil.bridgemanagementhelper.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+         <activity
+            android:name="cse.sep.mihil.bridgemanagementhelper.AnnotationActivity">     
+        </activity>
+        <activity 
+            android:name="cse.sep.mihil.bridgemanagementhelper.EnterNameActivity" 
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" > 
+            </activity>      
+        </application>
+
+</manifest>
+>>>>>>> fd817679896bb33aa0765336b9f237f32c1f6197
