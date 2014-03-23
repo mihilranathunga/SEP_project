@@ -449,4 +449,4 @@ public class ImageAnnotateActivity extends Activity {
 		this.finish();
 	}
 }
->>>>>>> third
+

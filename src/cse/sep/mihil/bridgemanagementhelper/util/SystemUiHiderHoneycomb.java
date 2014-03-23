@@ -132,4 +132,4 @@ public class SystemUiHiderHoneycomb extends SystemUiHiderBase {
 		}
 	};
 }
->>>>>>> third
+

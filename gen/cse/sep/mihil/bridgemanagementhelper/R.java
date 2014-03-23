@@ -106,13 +106,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int main=0x7f090002;
     }
     public static final class string {
+
         public static final int Annotate_text=0x7f060015;
         public static final int action_settings=0x7f060001;
         public static final int album_name=0x7f060007;
         public static final int annotate=0x7f060009;
         public static final int app_name=0x7f060000;
         public static final int cancel=0x7f060003;
-        public static final int cannot=0x7f06000a;
         public static final int confirm=0x7f060002;
         public static final int date=0x7f060011;
         public static final int dummy_button=0x7f060017;
