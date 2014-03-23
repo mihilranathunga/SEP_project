@@ -4,7 +4,7 @@
     android:versionCode="1"
     android:versionName="1.0" >
     
-    <uses-feature android:name="android.hardware.camera" />
+ <uses-feature android:name="android.hardware.camera" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-sdk
@@ -25,6 +25,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
+         <activity
+            android:name="cse.sep.mihil.bridgemanagementhelper.AnnotationActivity">     
+        </activity>
+        <activity 
+            android:name="cse.sep.mihil.bridgemanagementhelper.EnterNameActivity" 
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" > 
+            </activity>      
+        </application>
 
 </manifest>
